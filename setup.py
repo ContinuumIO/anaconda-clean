@@ -9,7 +9,7 @@ if sys.version_info < (2, 6):
     sys.exit(1)
 
 
-setup(name='anaconda-clean',
+setup(name='anaconda_clean',
       version='0.1',
       author='Continuum Analytics',
       license='MIT',
