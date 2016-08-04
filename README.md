@@ -14,4 +14,4 @@ Then, in your Python interpreter, run:
      import anaconda_clean as ac
      ac.main()
 
-This will run through the configuration files installed on your system and give you the option to delete each one. 
+This will run through the configuration files on your system and give you the option to delete each one. 
