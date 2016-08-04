@@ -6,6 +6,10 @@ source:
   git_rev: v0.9
   git_url: https://github.com/r-jain1/anaconda_clean.git
 
+build:
+  entry_points:
+    - clean = anaconda_clean:main
+
 requirements:
   build:
     - python
