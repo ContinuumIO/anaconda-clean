@@ -14,6 +14,6 @@ setup(name='anaconda_clean',
       author='Continuum Analytics',
       license='MIT',
       description='Delete Anaconda config files',
-      py_modules=['anaconda_clean'],
+      py_modules=['anaconda-clean/clean.py'],
       scripts=['anaconda-clean/clean.py'],
       )
