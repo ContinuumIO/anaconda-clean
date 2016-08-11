@@ -9,8 +9,8 @@ if sys.version_info < (2, 6):
     sys.exit(1)
 
 
-setup(name='anaconda_clean',
-      version='0.8',
+setup(name='anaconda-clean',
+      version='1.0',
       author='Continuum Analytics',
       license='MIT',
       description='Delete Anaconda config files',
