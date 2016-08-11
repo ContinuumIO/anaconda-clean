@@ -1,10 +1,10 @@
 package:
-  name: anaconda_clean
+  name: anaconda-clean
   version: "0.9"
 
 source:
   git_rev: v0.9
-  git_url: https://github.com/r-jain1/anaconda_clean.git
+  git_url: https://github.com/ContinuumIO/anaconda-clean
 
 build:
   entry_points:
@@ -24,7 +24,7 @@ test:
     - anaconda_clean
 
 about:
-  home: http://pyhacker.com/pages/sas7bdat.html
+  home: https://github.com/ContinuumIO/anaconda-clean
   license: MIT
   summary: Delete Anaconda configuration files 
-  dev_url: https://github.com/r-jain1/anaconda_clean
+  dev_url: https://github.com/ContinuumIO/anaconda-clean
