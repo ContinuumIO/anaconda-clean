@@ -1,4 +1,4 @@
-# anaconda_clean
+# anaconda-clean
 
 #### Description
 This module removes configuration files that are left behind when uninstalling Anaconda.
@@ -7,11 +7,19 @@ This module removes configuration files that are left behind when uninstalling A
 
 First, install the conda package. 
 
-     conda install -c RahulJain anaconda_clean
+     conda install -c RahulJain anaconda-clean
 
-Then, in your Python interpreter, run: 
+Then run: 
 
-     import anaconda_clean as ac
-     ac.main()
+     clean
 
-This will run through the configuration files on your system and give you the option to delete each one. 
+This will run through the configuration files/directories on your system and give you the option to delete each one. 
+
+Optional: 
+To automatically delete all files and directories, run:
+
+     clean --yes 
+     
+TO create a backup copy of the file/directory in a .anaconda_backup folder in your home directory, run: 
+
+     clean --backup
