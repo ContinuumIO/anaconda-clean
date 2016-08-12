@@ -13,11 +13,9 @@ build:
 requirements:
   build:
     - python
-    - future
 
   run:
     - python
-    - future
 
 test:
   imports:

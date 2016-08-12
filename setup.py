@@ -12,7 +12,7 @@ if sys.version_info < (2, 6):
 setup(name='anaconda-clean',
       version='1.0',
       author='Continuum Analytics',
-      license='MIT',
+      license='BSD',
       description='Delete Anaconda config files',
       py_modules=['anaconda_clean'],
       )

@@ -4,7 +4,6 @@ from os.path import isfile, isdir, join
 import sys, getopt
 from optparse import OptionParser
 import argparse
-from builtins import input
 
 FILES = ['.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile', '.bash_profile-anaconda.bak', '.bash_profile-anaconda2.bak', '.cache', '.conda', '.condamanager', '.condarc',
 '.config', '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython', '.jupyter', '.matplotlib', '.python-eggs', '.python_history', '.spyder2', '.spyder2-py3', '.theano']
@@ -66,7 +65,6 @@ def main():
         path = os.path.expanduser('~/%s' %fi)
         if(opts.delete_all):
             delete_file(path)
-            print("success")
         valid = False
         while(valid == False): 
             delete = input("Delete %s? (Y or N): " %fi ) 
