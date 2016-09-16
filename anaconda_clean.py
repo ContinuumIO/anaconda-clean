@@ -1,9 +1,8 @@
 import os
 import shutil
-from os.path import isfile, isdir, join
-import sys, getopt
 from optparse import OptionParser
-import argparse
+from os.path import isfile, isdir
+
 
 FILES = ['.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile', '.bash_profile-anaconda.bak', '.bash_profile-anaconda2.bak', '.cache', '.conda', '.condamanager', '.condarc',
 '.config', '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython', '.jupyter', '.matplotlib', '.python-eggs', '.python_history', '.spyder2', '.spyder2-py3', '.theano']
@@ -11,7 +10,7 @@ FILES = ['.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile', '.bash
 EXIST = []
 backup_file = False
 
-def get_files(): 
+def get_files():
     for x in sorted(os.listdir(os.path.expanduser('~'))):
         if x in FILES:
              EXIST.append(x)
@@ -59,21 +58,21 @@ def main():
             os.makedirs(dirpath)
 
     if(len(args) > 0):
-        p.error("No arguments expected") 
-    
+        p.error("No arguments expected")
+
     for fi in EXIST:
         path = os.path.expanduser('~/%s' %fi)
         if(opts.delete_all):
             delete_file(path)
         valid = False
-        while(valid == False): 
-            delete = raw_input("Delete %s? (Y or N): " %fi ) 
+        while(valid == False):
+            delete = raw_input("Delete %s? (Y or N): " %fi )
             if(delete == "" or delete == 'y' or delete == 'Y' ):
                 delete_file(path)
-                valid = True 
+                valid = True
             elif(delete == "n" or delete == "N"):
-                valid = True   
-            else: 
+                valid = True
+            else:
                 print("Invalid input")
 
 
