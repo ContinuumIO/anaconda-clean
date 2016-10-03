@@ -7,7 +7,7 @@ This module removes configuration files that are left behind when uninstalling A
 
 First, install the conda package. 
 
-     conda install -c RahulJain anaconda-clean
+     conda install anaconda-clean
 
 Then run: 
 
