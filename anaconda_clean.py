@@ -66,7 +66,7 @@ def main():
             delete_file(path)
         valid = False
         while(valid == False):
-            delete = raw_input("Delete %s? (Y or N): " %fi )
+            delete = input("Delete %s? (Y or N): " %fi )
             if(delete == "" or delete == 'y' or delete == 'Y' ):
                 delete_file(path)
                 valid = True
