@@ -11,15 +11,15 @@ First, install the conda package.
 
 Then run: 
 
-     clean
+     anaconda-clean
 
 This will run through the configuration files/directories on your system and give you the option to delete each one. 
 
 Optional: 
 To automatically delete all files and directories, run:
 
-     clean --yes 
+     anaconda-clean --yes 
      
 TO create a backup copy of the file/directory in a .anaconda_backup folder in your home directory, run: 
 
-     clean --backup
+     anaconda-clean --backup
