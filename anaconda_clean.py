@@ -4,9 +4,14 @@ from optparse import OptionParser
 from os.path import isfile, isdir
 
 
-FILES = ['.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile', '.bash_profile-anaconda.bak', '.bash_profile-anaconda2.bak', '.cache', '.conda', '.condamanager', '.condarc',
-'.config', '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython', '.jupyter', '.matplotlib', '.python-eggs', '.python_history', '.spyder2', '.spyder2-py3', '.theano']
-
+FILES = [
+    '.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile',
+    '.bash_profile-anaconda.bak', '.bash_profile-anaconda2.bak',
+    '.cache', '.conda', '.condamanager', '.condarc', '.config',
+    '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython',
+    '.jupyter', '.matplotlib', '.python-eggs', '.python_history',
+    '.spyder2', '.spyder2-py3', '.theano',
+]
 EXIST = []
 backup_file = False
 
