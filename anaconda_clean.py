@@ -1,4 +1,5 @@
 import os
+import sys
 import shutil
 from optparse import OptionParser
 from os.path import isfile, isdir
@@ -20,6 +21,11 @@ def get_files():
         if x in FILES:
              EXIST.append(x)
 
+def get_input(msg):
+    if sys.version_info[0] == 2:
+        return raw_input(msg)
+    else:
+        return input(msg)
 
 def delete_file(path):
     if isfile(path):
@@ -71,14 +77,14 @@ def main():
             delete_file(path)
         valid = False
         while not valid:
-            delete = raw_input("Delete %s? (Y or N): " % fi)
-            if delete == 'y' or delete == 'Y':
+            delete = get_input("Delete %s? (y/n): " % fi).strip().lower()
+            if delete == 'y':
                 delete_file(path)
                 valid = True
-            elif delete == "n" or delete == "N":
+            elif delete == 'n':
                 valid = True
             else:
-                print("Invalid input")
+                print("Invalid input: %s" % delete)
 
 
 if __name__ == '__main__':
