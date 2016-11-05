@@ -22,18 +22,18 @@ def get_files():
 
 
 def delete_file(path):
-    if(isfile(path)):
-        if(backup_file):
+    if isfile(path):
+        if backup_file:
             shutil.move(path, dirpath)
         else:
             os.remove(path)
-    elif(isdir(path)):
-        if(backup_file):
+    elif isdir(path):
+        if backup_file:
             shutil.move(path, dirpath)
         else:
             shutil.rmtree(path)
     else:
-        print("Error: Unable to remove %s" %fi)
+        print("Error: Unable to remove %s" % path)
 
 
 def main():
@@ -53,29 +53,29 @@ def main():
                  help="create a backup folder of deleted files")
     opts, args = p.parse_args()
 
-    if(opts.backup):
+    if opts.backup:
         global backup_file
         backup_file  = True
         global dirpath
         dirpath = os.path.expanduser('~')
-        dirpath= os.path.join(dirpath, '.anaconda_backup')
+        dirpath = os.path.join(dirpath, '.anaconda_backup')
         if not os.path.exists(dirpath):
             os.makedirs(dirpath)
 
-    if(len(args) > 0):
+    if len(args) > 0:
         p.error("No arguments expected")
 
     for fi in EXIST:
         path = os.path.expanduser('~/%s' %fi)
-        if(opts.delete_all):
+        if opts.delete_all:
             delete_file(path)
         valid = False
-        while(valid == False):
-            delete = raw_input("Delete %s? (Y or N): " %fi )
-            if(delete == "" or delete == 'y' or delete == 'Y' ):
+        while not valid:
+            delete = raw_input("Delete %s? (Y or N): " % fi)
+            if delete == 'y' or delete == 'Y':
                 delete_file(path)
                 valid = True
-            elif(delete == "n" or delete == "N"):
+            elif delete == "n" or delete == "N":
                 valid = True
             else:
                 print("Invalid input")
