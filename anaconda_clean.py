@@ -77,14 +77,14 @@ def main():
             delete_file(path)
         valid = False
         while not valid:
-            delete = get_input("Delete %s? (y/n): " % fi).strip().lower()
-            if delete == 'y':
+            res = get_input("Delete %s? (y/n): " % fi).strip().lower()
+            if res == 'y':
                 delete_file(path)
                 valid = True
-            elif delete == 'n':
+            elif res == 'n':
                 valid = True
             else:
-                print("Invalid input: %s" % delete)
+                print("Invalid input: %s" % res)
 
 
 if __name__ == '__main__':
