@@ -6,8 +6,7 @@ from os.path import isfile, isdir
 
 
 FILES = [
-    '.anaconda', '.astropy', '.atom', '.continuum', '.bash_profile',
-    '.bash_profile-anaconda.bak', '.bash_profile-anaconda2.bak',
+    '.anaconda', '.astropy', '.atom', '.continuum',
     '.cache', '.conda', '.condamanager', '.condarc', '.config',
     '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython',
     '.jupyter', '.matplotlib', '.python-eggs', '.python_history',
