@@ -24,5 +24,5 @@ test:
 about:
   home: https://github.com/ContinuumIO/anaconda-clean
   license: MIT
-  summary: Delete Anaconda configuration files 
+  summary: Delete Anaconda configuration files
   dev_url: https://github.com/ContinuumIO/anaconda-clean

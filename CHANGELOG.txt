@@ -1,3 +1,8 @@
+2016-12-01   1.0.2:
+-------------------
+  * remove '.bash_profile' from remove list
+
+
 2016-11-17   1.0.1:
 -------------------
   * fix bug when running with Python 3
