@@ -1,3 +1,8 @@
+2016-12-15   1.0.3:
+-------------------
+  * remove '.config' from remove list
+
+
 2016-12-01   1.0.2:
 -------------------
   * remove '.bash_profile' from remove list
