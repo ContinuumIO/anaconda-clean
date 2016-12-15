@@ -7,7 +7,7 @@ from os.path import isfile, isdir
 
 FILES = [
     '.anaconda', '.astropy', '.atom', '.continuum',
-    '.cache', '.conda', '.condamanager', '.condarc', '.config',
+    '.cache', '.conda', '.condamanager', '.condarc',
     '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython',
     '.jupyter', '.matplotlib', '.python-eggs', '.python_history',
     '.spyder2', '.spyder2-py3', '.theano',
