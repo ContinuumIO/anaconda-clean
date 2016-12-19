@@ -2,7 +2,7 @@ import os
 import sys
 import shutil
 from optparse import OptionParser
-from os.path import isfile, isdir
+from os.path import expanduser, isfile, isdir
 
 
 FILES = [
@@ -12,13 +12,8 @@ FILES = [
     '.jupyter', '.matplotlib', '.python-eggs',
     '.spyder2', '.spyder2-py3', '.theano',
 ]
-EXIST = []
-backup_file = False
+BACKUP_DIR = expanduser('~/.anaconda_backup')
 
-def get_files():
-    for x in sorted(os.listdir(os.path.expanduser('~'))):
-        if x in FILES:
-             EXIST.append(x)
 
 def get_input(msg):
     if sys.version_info[0] == 2:
@@ -26,57 +21,52 @@ def get_input(msg):
     else:
         return input(msg)
 
+
 def delete_file(path):
+    if not isdir(BACKUP_DIR):
+        os.mkdir(BACKUP_DIR)
+
     if isfile(path):
-        if backup_file:
-            shutil.move(path, dirpath)
-        else:
-            os.remove(path)
+        shutil.move(path, BACKUP_DIR)
     elif isdir(path):
-        if backup_file:
-            shutil.move(path, dirpath)
-        else:
-            shutil.rmtree(path)
+        shutil.move(path, BACKUP_DIR)
     else:
-        print("Error: Unable to remove %s" % path)
+        print("Error: Unable to move %s" % path)
 
 
 def main():
-    get_files()
     p = OptionParser(
         usage="usage: %prog [options]",
         description="Deletes anaconda config files & directories")
+
     p.add_option("-y", "--yes",
                   action="store_true",
                   dest="delete_all",
                   default=False,
                   help="delete all config files & directories")
+
     p.add_option("-b", "--backup",
                  action="store_true",
                  dest="backup",
                  default="False",
                  help="create a backup folder of deleted files")
-    opts, args = p.parse_args()
 
-    if opts.backup:
-        global backup_file
-        backup_file  = True
-        global dirpath
-        dirpath = os.path.expanduser('~')
-        dirpath = os.path.join(dirpath, '.anaconda_backup')
-        if not os.path.exists(dirpath):
-            os.makedirs(dirpath)
+    opts, args = p.parse_args()
 
     if len(args) > 0:
         p.error("No arguments expected")
 
-    for fi in EXIST:
-        path = os.path.expanduser('~/%s' %fi)
+    for fn in sorted(os.listdir(expanduser('~'))):
+        if fn not in FILES:
+            continue
+
+        path = expanduser('~/%s' % fn)
         if opts.delete_all:
             delete_file(path)
+
         valid = False
         while not valid:
-            res = get_input("Delete %s? (y/n): " % fi).strip().lower()
+            res = get_input("Delete %s? (y/n): " % fn).strip().lower()
             if res == 'y':
                 delete_file(path)
                 valid = True
