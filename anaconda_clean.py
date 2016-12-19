@@ -6,10 +6,10 @@ from os.path import isfile, isdir
 
 
 FILES = [
-    '.anaconda', '.astropy', '.atom', '.continuum',
-    '.cache', '.conda', '.condamanager', '.condarc',
+    '.anaconda', '.astropy', '.continuum',
+    '.conda', '.condamanager', '.condarc',
     '.enthought', '.idlerc', '.glue', '.ipynb_checkpoints', '.ipython',
-    '.jupyter', '.matplotlib', '.python-eggs', '.python_history',
+    '.jupyter', '.matplotlib', '.python-eggs',
     '.spyder2', '.spyder2-py3', '.theano',
 ]
 EXIST = []
