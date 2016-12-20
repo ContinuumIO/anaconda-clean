@@ -14,7 +14,7 @@ FILES = [
 ]
 HOME = expanduser('~')
 BACKUP_DIR = join(HOME, '.anaconda_backup',
-                  time.strftime("%Y-%m-%dT%H-%M-%S", time.localtime()))
+                  time.strftime("%Y-%m-%dT%H%M%S", time.localtime()))
 
 
 def get_input(msg):
@@ -26,6 +26,7 @@ def get_input(msg):
 
 def delete_file(path):
     if not isdir(BACKUP_DIR):
+        print("Backup directory: %s" % BACKUP_DIR)
         os.makedirs(BACKUP_DIR)
 
     try:
