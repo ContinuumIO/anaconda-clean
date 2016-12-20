@@ -41,15 +41,8 @@ def main():
 
     p.add_option("-y", "--yes",
                   action="store_true",
-                  dest="delete_all",
                   default=False,
                   help="delete all config files & directories")
-
-    p.add_option("-b", "--backup",
-                 action="store_true",
-                 dest="backup",
-                 default="False",
-                 help="create a backup folder of deleted files")
 
     opts, args = p.parse_args()
 
@@ -61,8 +54,9 @@ def main():
             continue
 
         path = expanduser('~/%s' % fn)
-        if opts.delete_all:
+        if opts.yes:
             delete_file(path)
+            continue
 
         valid = False
         while not valid:
