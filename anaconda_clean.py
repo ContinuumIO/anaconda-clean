@@ -1,8 +1,7 @@
 import os
 import sys
-import shutil
 from optparse import OptionParser
-from os.path import expanduser, isfile, isdir
+from os.path import basename, expanduser, isdir, join
 
 
 FILES = [
@@ -12,7 +11,8 @@ FILES = [
     '.jupyter', '.matplotlib', '.python-eggs',
     '.spyder2', '.spyder2-py3', '.theano',
 ]
-BACKUP_DIR = expanduser('~/.anaconda_backup')
+HOME = expanduser('~')
+BACKUP_DIR = join(HOME, '.anaconda_backup')
 
 
 def get_input(msg):
@@ -26,11 +26,9 @@ def delete_file(path):
     if not isdir(BACKUP_DIR):
         os.mkdir(BACKUP_DIR)
 
-    if isfile(path):
-        shutil.move(path, BACKUP_DIR)
-    elif isdir(path):
-        shutil.move(path, BACKUP_DIR)
-    else:
+    try:
+        os.rename(path, join(BACKUP_DIR, basename(path)))
+    except OSError:
         print("Error: Unable to move %s" % path)
 
 
@@ -49,11 +47,11 @@ def main():
     if len(args) > 0:
         p.error("No arguments expected")
 
-    for fn in sorted(os.listdir(expanduser('~'))):
+    for fn in sorted(os.listdir(HOME)):
         if fn not in FILES:
             continue
 
-        path = expanduser('~/%s' % fn)
+        path = join(HOME, fn)
         if opts.yes:
             delete_file(path)
             continue
