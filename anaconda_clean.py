@@ -26,7 +26,7 @@ def get_input(msg):
 
 def delete_file(path):
     if not isdir(BACKUP_DIR):
-        os.mkdir(BACKUP_DIR)
+        os.makedirs(BACKUP_DIR)
 
     try:
         os.rename(path, join(BACKUP_DIR, basename(path)))
