@@ -1,4 +1,4 @@
-2016-12-XX   1.1.0:
+2016-12-20   1.1.0:
 -------------------
   * remove --backup option (always backup)
   * remove '.atom', '.cache' and '.python_history' from remove list
