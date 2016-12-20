@@ -1,5 +1,6 @@
 import os
 import sys
+import time
 from optparse import OptionParser
 from os.path import basename, expanduser, isdir, join
 
@@ -12,7 +13,8 @@ FILES = [
     '.spyder2', '.spyder2-py3', '.theano',
 ]
 HOME = expanduser('~')
-BACKUP_DIR = join(HOME, '.anaconda_backup')
+BACKUP_DIR = join(HOME, '.anaconda_backup',
+                  time.strftime("%Y-%m-%dT%H-%M-%S", time.localtime()))
 
 
 def get_input(msg):
