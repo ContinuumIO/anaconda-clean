@@ -35,6 +35,34 @@ def delete_file(path):
         print("Error: Unable to move %s" % path)
 
 
+def find_menu_shortcuts():
+    from menuinst.win32 import folder_path
+    user_shortcuts_dir = folder_path('user', 'system', 'start')
+    menus_to_remove = set()
+    for d in os.listdir(user_shortcuts_dir):
+        if 'Anaconda' in d:
+            menus_to_remove.add(join(user_shortcuts_dir, d))
+        elif 'Miniconda' in d:
+            menus_to_remove.add(join(user_shortcuts_dir, d))
+    return menus_to_remove
+
+
+def prompt_delete(path, opts):
+    if opts.yes:
+        delete_file(path)
+        continue
+
+    valid = False
+    while not valid:
+        res = get_input("Delete %s? (y/n): " % fn).strip().lower()
+        if res == 'y':
+            delete_file(path)
+            valid = True
+        elif res == 'n':
+            valid = True
+        else:
+            print("Invalid input: %s" % res)
+
 def main():
     p = OptionParser(
         usage="usage: %prog [options]",
@@ -53,22 +81,11 @@ def main():
     for fn in sorted(os.listdir(HOME)):
         if fn not in FILES:
             continue
+        prompt_delete(join(HOME, fn), opts)
 
-        path = join(HOME, fn)
-        if opts.yes:
-            delete_file(path)
-            continue
-
-        valid = False
-        while not valid:
-            res = get_input("Delete %s? (y/n): " % fn).strip().lower()
-            if res == 'y':
-                delete_file(path)
-                valid = True
-            elif res == 'n':
-                valid = True
-            else:
-                print("Invalid input: %s" % res)
+    if sys.platform == 'win32':
+        for menu in find_menu_shortcuts():
+            prompt_delete(menu)
 
 
 if __name__ == '__main__':
