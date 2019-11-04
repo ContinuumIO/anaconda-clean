@@ -50,7 +50,7 @@ def find_menu_shortcuts():
 def prompt_delete(path):
     valid = False
     while not valid:
-        res = get_input("Delete %s? (y/n): " % fn).strip().lower()
+        res = get_input("Delete %s? (y/n): " % path).strip().lower()
         if res == 'y':
             delete_file(path)
             valid = True
