@@ -47,11 +47,7 @@ def find_menu_shortcuts():
     return menus_to_remove
 
 
-def prompt_delete(path, opts):
-    if opts.yes:
-        delete_file(path)
-        continue
-
+def prompt_delete(path):
     valid = False
     while not valid:
         res = get_input("Delete %s? (y/n): " % fn).strip().lower()
@@ -79,9 +75,14 @@ def main():
         p.error("No arguments expected")
 
     for fn in sorted(os.listdir(HOME)):
+        path = join(HOME, fn)
         if fn not in FILES:
             continue
-        prompt_delete(join(HOME, fn), opts)
+        if opts.yes:
+            delete_file(path)
+            continue
+        else:
+            prompt_delete(path)
 
     if sys.platform == 'win32':
         for menu in find_menu_shortcuts():
